@@ -39,6 +39,21 @@ Given there is a movie which is awesome, popular and successful but not science 
 And there is a director with the income "500000" but with the account balance "-30000"
 ```
 
+If you have many attribute assignments you can use doc string or data table:
+
+```cucumber
+Given there is a movie with these attributes:
+  """
+  name: Sunshine
+  comedy: false
+  """
+```
+
+```cucumber
+Given there is a movie with these attributes:
+  | name   | Sunshine |
+  | comedy | false    |
+```
 
 Setting associations
 --------------------
@@ -70,6 +85,22 @@ And there is a movie with the prequel "Before Sunrise"
 
 Note that in the example above, "Before Sunrise" is only a name you can use to refer to the record. The name is not actually used for the movie title, or any other attribute value.
 
+It is not possible to define associations in doc string or data table, but you can combine them in one
+step:
+
+```cucumber
+Given there is a movie with the prequel above and these attributes:
+  """
+  name: Sunshine
+  comedy: false
+  """
+```
+
+```cucumber
+Given there is a movie with the prequel above and these attributes:
+  | name   | Sunshine |
+  | comedy | false    |
+```
 
 Support for popular factory gems
 --------------------------------
